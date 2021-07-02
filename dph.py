@@ -116,10 +116,10 @@ def _main():
 
     int_ = lambda x: int(x, 0)
 
-    exp_parser.add_argument('g', help='the generator of the Diffie-Hellman implementation', type=int_)
-    exp_parser.add_argument('h', help='the congruent value', type=int_)
     exp_parser.add_argument('p_factors', help='a comma-separated list of the prime sub-factors of the 1st prime factor, `p`, of the semi-prime Diffie-Hellman modulus', type=str)
     exp_parser.add_argument('q_factors', help='a comma-separated list of the prime sub-factors of the 2nd prime factor, `q`, of the semi-prime Diffie-Hellman modulus', type=str)
+    exp_parser.add_argument('g', help='the generator of the Diffie-Hellman implementation', type=int_)
+    exp_parser.add_argument('h', help='the congruent value', type=int_)
 
     exp_parser.set_defaults(func=_exp)
 
