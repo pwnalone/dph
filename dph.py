@@ -64,8 +64,6 @@ def _exp(args):
     p = 2 * _product(*p_factors) + 1
     q = 2 * _product(*q_factors) + 1
 
-    n = p * q
-
     if Config.verbose:
         print(f'p = 0x{p.digits(16)}')
         print(f'q = 0x{q.digits(16)}')
