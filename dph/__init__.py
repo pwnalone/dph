@@ -7,3 +7,4 @@ from .crt import *
 from .paramgen import *
 from .pohlig import *
 from .pollard import *
+from .util import *

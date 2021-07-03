@@ -1,12 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from dph import *
+from . import *
 
 from binascii import hexlify
-from functools import reduce
 from gmpy2 import *
-import operator
 import os
 
 
@@ -17,9 +15,6 @@ DEFAULT_SMOOTHNESS = 32
 
 __all__ = [ 'DEFAULT_FIELD_SIZE', 'DEFAULT_SMOOTHNESS' ]
 
-
-def _product(*args):
-    return reduce(operator.mul, args)
 
 def _gen(args):
     seed = int(hexlify(os.urandom(16)).decode(), 16)
@@ -64,8 +59,8 @@ def _exp(args):
     except ValueError:
         pass
 
-    p = 2 * _product(*p_factors) + 1
-    q = 2 * _product(*q_factors) + 1
+    p = 2 * product(*p_factors) + 1
+    q = 2 * product(*q_factors) + 1
 
     if Config.verbose:
         print(f'p = 0x{p.digits(16)}')

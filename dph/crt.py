@@ -1,22 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from functools import reduce
+from .util import product
+
 from gmpy2 import *
-import operator
 
 
 __all__ = [ 'crt' ]
 
 
-def _product(*args):
-    return reduce(operator.mul, args)
-
 def crt(a, p):
-    N = _product(*p)
+    N = product(*p)
     n = [divexact(N, pi) for pi in p]
     u = list(map(lambda a, b: pow(a, -1, b), n, p))
-    return sum(map(_product, a, n, u)) % N
+    return sum(map(product, a, n, u)) % N
 
 
 def _main():
