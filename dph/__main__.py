@@ -82,7 +82,10 @@ def _exp(args):
     if Config.verbose:
         print()
 
-    x = crt([px, qx], [p, q])
+    pp = (p - 1) // gcd(p - 1, px)
+    qq = (q - 1) // gcd(q - 1, qx)
+
+    x = crt([px, qx], [pp, qq])
 
     print(f'x = 0x{x.digits(16)}')
 

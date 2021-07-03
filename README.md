@@ -272,7 +272,3 @@ x = 0x1ee7
 ```
 
 This final value of x is the verifiable solution to our discrete logarithm problem.
-
-### Bugs
-
-- This currently is not working for large values of x.
