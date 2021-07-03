@@ -5,7 +5,6 @@ from .config import *
 from binascii import hexlify
 from gmpy2 import *
 import os
-import sys
 
 
 SMOOTHNESS = 30
