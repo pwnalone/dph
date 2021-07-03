@@ -98,17 +98,17 @@ def _main():
     gen_parser = subparsers.add_parser('gen', help='generate special parameters to inject a NOBUS backdoor into a Diffie-Hellman implementation')
     exp_parser = subparsers.add_parser('exp', help='exploit an existing backdoor in a Diffie-Hellman implementation')
 
-    gen_parser.description = 'Generate special parameters to inject a NOBUS backdoor into a Diffie-Hellman implementation.'
+    gen_parser.description = 'Generate special parameters to inject a NOBUS backdoor into a Diffie-Hellman (DH) implementation.'
 
     gen_parser.add_argument(
             '-b', '--bits',
-            help='the number of bits in the semi-prime Diffie-Hellman modulus [default: %(default)s]',
+            help='the number of bits in the backdoor DH modulus [default: %(default)s]',
             type=int,
             default=DEFAULT_FIELD_SIZE
             )
     gen_parser.add_argument(
             '--smoothness',
-            help='the maximum size (in bits) of any prime sub-factor, forming `p - 1` or `q - 1`, where `p` and `q` are the prime factors of the semi-prime Diffie-Hellman modulus [default: %(default)s]',
+            help='the maximum size (in bits) of any prime sub-factor, forming `p - 1` or `q - 1`, where `p` and `q` are the prime factors of the backdoor DH modulus [default: %(default)s]',
             type=int,
             default=DEFAULT_SMOOTHNESS
             )
@@ -119,8 +119,8 @@ def _main():
 
     int_ = lambda x: int(x, 0)
 
-    exp_parser.add_argument('p_factors', help='a comma-separated list of the prime sub-factors of the 1st prime factor, `p`, of the semi-prime Diffie-Hellman modulus', type=str)
-    exp_parser.add_argument('q_factors', help='a comma-separated list of the prime sub-factors of the 2nd prime factor, `q`, of the semi-prime Diffie-Hellman modulus', type=str)
+    exp_parser.add_argument('p_factors', help='a comma-separated list of the prime sub-factors of the 1st prime factor, `p`, of the backdoor Diffie-Hellman modulus', type=str)
+    exp_parser.add_argument('q_factors', help='a comma-separated list of the prime sub-factors of the 2nd prime factor, `q`, of the backdoor Diffie-Hellman modulus', type=str)
     exp_parser.add_argument('g', help='the generator of the Diffie-Hellman implementation', type=int_)
     exp_parser.add_argument('h', help='the congruent value', type=int_)
 
