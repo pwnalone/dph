@@ -15,6 +15,9 @@ DEFAULT_FIELD_SIZE = 2048
 DEFAULT_SMOOTHNESS = 32
 
 
+__all__ = [ 'DEFAULT_FIELD_SIZE', 'DEFAULT_SMOOTHNESS' ]
+
+
 def _product(*args):
     return reduce(operator.mul, args)
 
@@ -88,6 +91,8 @@ def _main():
     from argparse import ArgumentParser
 
     parser = ArgumentParser(description='Craft and exploit NOBUS backdoors in Diffie-Hellman implementations.')
+
+    parser.prog = 'dph'
 
     parser.add_argument('-q', '--quiet', help='enable quiet output', dest='verbose', action='store_false')
 
