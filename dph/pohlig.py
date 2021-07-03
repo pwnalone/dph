@@ -4,6 +4,7 @@
 from .config import *
 from .crt import crt
 from .pollard import pollard
+from .util import product
 
 from gmpy2 import *
 
@@ -32,19 +33,24 @@ def pohlig(G, H, P, factors):
 def _main():
     import sys
 
-    if len(sys.argv) != 5:
-        print('Usage: pollard g h p f1[,f2[,...[,fk]]]')
+    if len(sys.argv) != 4:
+        print('Usage: pohlig f1[,f2[,...[,fk]]] g h')
         print()
         print('  Solve the discrete logarithm in a finite abelian group using the Pohlig-Hellman algorithm.')
         print()
-        print('  i.e. Find an integer x s.t. g^x = h (mod p), where p - 1 = f1 * f2 * ... * fk.')
+        print('  i.e. Find an integer x s.t. g^x = h (mod p), where p - 1 = 2 * f1 * f2 * ... * fk.')
         sys.exit(0)
 
-    g = mpz(sys.argv[1])
-    h = mpz(sys.argv[2])
-    p = mpz(sys.argv[3])
+    factors = list(map(mpz, sys.argv[1].split(',')))
+    try:
+        factors.remove(2)
+    except ValueError:
+        pass
 
-    factors = list(map(mpz, sys.argv[4].split(',')))
+    g = mpz(sys.argv[2])
+    h = mpz(sys.argv[3])
+
+    p = 2 * product(*factors) + 1
 
     x = pohlig(g, h, p, factors)
     if Config.verbose:
