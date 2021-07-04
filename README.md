@@ -272,3 +272,10 @@ x = 0x1ee7
 ```
 
 This final value of x is the verifiable solution to our discrete logarithm problem.
+
+### Known Bugs
+
+- This backdoor is **not** actually NOBUS, since [Pollard's p - 1 factorization
+  algorithm](https://en.wikipedia.org/wiki/Pollard%27s_p_%E2%88%92_1_algorithm) could be used to
+  efficiently find the factors, `p` and `q`. See the discussion of `p_big` and `q_big` in the the
+  white paper for a solution to this issue.
